@@ -50,7 +50,7 @@ plt.show()
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 clf = RandomForestClassifier()
-clf.fit(features_train, labels_train)
+proclf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 acc_rf = accuracy_score(labels_test, pred)
 print acc_rf
