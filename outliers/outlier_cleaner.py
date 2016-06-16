@@ -14,7 +14,18 @@ def outlierCleaner(predictions, ages, net_worths):
     cleaned_data = []
 
     ### your code goes here
+    error_square = []
 
+    for i in range(len(predictions)):
+        error_square.append((predictions[i]-net_worths[i])**2)
+    error_square_sorted = sorted(error_square)
+    error_thres = error_square_sorted[int(round(0.9*len(predictions)))]
     
+    for i in range(len(predictions)):
+        if (predictions[i]-net_worths[i])**2 < error_thres:
+            cleaned_data.append(((ages[i], net_worths[i], (predictions[i]-net_worths[i]))))
+
     return cleaned_data
+    
+    
 
