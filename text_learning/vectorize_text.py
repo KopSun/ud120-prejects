@@ -59,6 +59,8 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             words = str.replace(words,"shackleton","")
             words = str.replace(words,"chris","")
             words = str.replace(words,"germani","")
+            words = str.replace(words,"sshacklensf","")
+            words = str.replace(words,"cgermannsf","")
 
             ### append the text to word_data
             word_data.append(words)
@@ -87,9 +89,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 transformed_word_data = []
 cls = TfidfVectorizer(stop_words = "english")
 cls.fit_transform(word_data)
-#print len(transformed_word_data)
-print len(cls.get_feature_names())
 transformed_word_data = cls.get_feature_names()
+print len(transformed_word_data)
 print transformed_word_data[34597]
 
 

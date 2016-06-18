@@ -34,10 +34,30 @@ features_test  = vectorizer.transform(features_test).toarray()
 ### train on only 150 events to put ourselves in this regime
 features_train = features_train[:150].toarray()
 labels_train   = labels_train[:150]
+print len(labels_train)
 
 
 
 ### your code goes here
+from sklearn import tree
+clf = tree.DecisionTreeClassifier()
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
 
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(labels_test, pred)
+print acc
+feature_weight = clf.feature_importances_
+max_weight = 0
+max_weight_cnt = 0
+for i in feature_weight:
+    if i > max_weight:
+        max_weight = i
+        max_weight_ind = max_weight_cnt
+    max_weight_cnt += 1
+print max_weight
+print max_weight_ind
+word_data_1 = vectorizer.get_feature_names()
+print word_data_1[max_weight_ind]
 
 
