@@ -43,20 +43,31 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 ### there's an outlier--remove it! 
 data_dict.pop("TOTAL", 0)
 
-#max_eso = 0 
-#min_eso = 1e15
-#name = []
-#
-#for i in data_dict:
-#    if data_dict[i]['salary'] != 'NaN':
-#        if data_dict[i]['salary'] > max_eso:
-#            max_eso = data_dict[i]['salary']
-#        if data_dict[i]['salary'] < min_eso:
-#            min_eso = data_dict[i]['salary']
-#            name = i
-#print max_eso
-#print min_eso
-#print name
+max_salary = 0 
+min_salary = 1e15
+name = []
+
+for i in data_dict:
+    if data_dict[i]['salary'] != 'NaN':
+        if data_dict[i]['salary'] > max_salary:
+            max_salary = data_dict[i]['salary']
+        if data_dict[i]['salary'] < min_salary:
+            min_salary = data_dict[i]['salary']
+            name = i
+print (200000.0- min_salary)/(max_salary-min_salary)
+
+max_eso = 0 
+min_eso = 1e15
+name = []
+
+for i in data_dict:
+    if data_dict[i]['exercised_stock_options'] != 'NaN':
+        if data_dict[i]['exercised_stock_options'] > max_eso:
+            max_eso = data_dict[i]['exercised_stock_options']
+        if data_dict[i]['exercised_stock_options'] < min_eso:
+            min_eso = data_dict[i]['exercised_stock_options']
+            name = i
+print (1000000.0- min_eso)/(max_eso-min_eso)
 
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
